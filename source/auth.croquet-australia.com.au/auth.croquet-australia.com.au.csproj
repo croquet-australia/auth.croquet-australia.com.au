@@ -72,6 +72,10 @@
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NLog.4.3.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -94,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
-    <EmbeddedResource Include="Infrastructure\IdentityServer\idsrv3test.pfx" />
+    <EmbeddedResource Include="Infrastructure\idsrv3test.pfx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -110,14 +114,13 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Infrastructure\IdentityServer\Clients.cs" />
-    <Compile Include="Infrastructure\IdentityServer\Factory.cs" />
-    <Compile Include="Infrastructure\IdentityServer\Certificate.cs" />
-    <Compile Include="Infrastructure\IdentityServer\Scopes.cs" />
-    <Compile Include="Infrastructure\IdentityServer\Users.cs" />
+    <Compile Include="Infrastructure\ICertificateProvider.cs" />
+    <Compile Include="Infrastructure\CannotResolveService.cs" />
+    <Compile Include="Infrastructure\CertificateProvider.cs" />
+    <Compile Include="Infrastructure\ServiceProviderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\ServiceProvider.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="StartupOptions.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

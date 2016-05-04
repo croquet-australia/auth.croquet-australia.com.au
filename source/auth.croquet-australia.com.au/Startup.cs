@@ -1,4 +1,6 @@
 ﻿using CroquetAustralia.Auth;
+using CroquetAustralia.Auth.Infrastructure;
+using IdentityServer3.Core.Configuration;
 using Microsoft.Owin;
 using Owin;
 
@@ -8,14 +10,16 @@ namespace CroquetAustralia.Auth
 {
     public class Startup
     {
-        public void Configuration(IAppBuilder app)
+        public void Configuration(IAppBuilder appBuilder)
         {
-            Configuration(app, new StartupOptions());
+            var serviceProvider = new ServiceProvider();
+
+            Configuration(appBuilder, serviceProvider.CreateIdentityServerOptions());
         }
 
-        public void Configuration(IAppBuilder appBuilder, StartupOptions options)
+        public void Configuration(IAppBuilder appBuilder, IdentityServerOptions identityServerOptions)
         {
-            appBuilder.UseIdentityServer(options.IdentityServerOptions);
+            appBuilder.UseIdentityServer(identityServerOptions);
         }
     }
 }

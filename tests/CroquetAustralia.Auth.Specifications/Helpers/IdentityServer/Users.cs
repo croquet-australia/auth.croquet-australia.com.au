@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer3.Core.Services.InMemory;
 
-namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
+namespace CroquetAustralia.Auth.Specifications.Helpers.IdentityServer
 {
     internal static class Users
     {

@@ -1,17 +1,18 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
-namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
+namespace CroquetAustralia.Auth.Infrastructure
 {
-    public class Certificate
+    internal class CertificateProvider : ICertificateProvider
     {
-        public static X509Certificate2 Get()
+        public X509Certificate2 GetSigningCertificate()
         {
             const string password = "idsrv3test";
-            var resourceName = $"{GetNamespace()}.idsrv3test.pfx";
 
-            var assembly = Assembly.GetAssembly(typeof(Certificate));
+            var certificateProvider = typeof(CertificateProvider);
+            var resourceName = $"{GetNamespace(certificateProvider)}.idsrv3test.pfx";
+            var assembly = Assembly.GetAssembly(certificateProvider);
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
@@ -26,9 +27,8 @@ namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
             }
         }
 
-        private static string GetNamespace()
+        private static string GetNamespace(Type type)
         {
-            var type = typeof(Certificate);
             return type.FullName.Substring(0, type.FullName.Length - type.Name.Length - 1);
         }
     }

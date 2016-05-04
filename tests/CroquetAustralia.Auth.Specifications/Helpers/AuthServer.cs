@@ -1,8 +1,10 @@
 ﻿using System;
 using Anotar.NLog;
+using CroquetAustralia.Auth.Infrastructure;
 using IdentityModel.Client;
 using Microsoft.Owin.Hosting;
 using Newtonsoft.Json;
+using Owin;
 
 namespace CroquetAustralia.Auth.Specifications.Helpers
 {
@@ -67,17 +69,18 @@ namespace CroquetAustralia.Auth.Specifications.Helpers
 
         private static void Start()
         {
-            var options = new StartupOptions
-            {
-                IdentityServerOptions =
-                {
-                    RequireSsl = false
-                }
-            };
+            _webApp = WebApp.Start(BaseUrl, ConfigureWebApp);
+        }
 
-            _webApp = WebApp.Start(
-                BaseUrl,
-                startup => { new Startup().Configuration(startup, options); });
+        private static void ConfigureWebApp(IAppBuilder appBuilder)
+        {
+            const bool requireSsl = false;
+
+            var startup = new Startup();
+            var serviceProvider = new ServiceProvider();
+            var identityServerOptions = serviceProvider.CreateIdentityServerOptions(requireSsl);
+
+            startup.Configuration(appBuilder, identityServerOptions);
         }
 
         private static bool IsRunning()

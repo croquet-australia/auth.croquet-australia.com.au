@@ -123,6 +123,10 @@
     </Compile>
     <Compile Include="Helpers\DummyWebApiServer.cs" />
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\IdentityServer\Clients.cs" />
+    <Compile Include="Helpers\IdentityServer\Scopes.cs" />
+    <Compile Include="Helpers\IdentityServer\Users.cs" />
+    <Compile Include="Helpers\ServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\Given.cs" />
     <Compile Include="Helpers\Actual.cs" />
