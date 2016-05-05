@@ -44,7 +44,8 @@ namespace IdentityServer3.AzureTableStorage.Stores
         ///     Gets all defined scopes.
         /// </summary>
         /// <param name="publicOnly">
-        ///     if set to <c>true</c> only public scopes are returned.
+        ///     if set to <c>true</c> only public scopes 
+        ///     (<see cref="Scope.ShowInDiscoveryDocument"/>) are returned.
         /// </param>
         /// <returns>
         ///     List of all defined scopes.
