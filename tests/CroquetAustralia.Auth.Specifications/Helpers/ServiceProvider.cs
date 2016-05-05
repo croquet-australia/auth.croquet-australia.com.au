@@ -1,32 +1,17 @@
-using System;
-using System.Collections.Generic;
-using CroquetAustralia.Auth.Infrastructure.IdentityServer;
-using CroquetAustralia.Auth.Specifications.Helpers.IdentityServer;
-using IdentityServer3.Core.Services;
-using IdentityServer3.Core.Services.InMemory;
+using CroquetAustralia.Auth.Infrastructure.AzureTableStorage;
+using Ninject.Modules;
 
 namespace CroquetAustralia.Auth.Specifications.Helpers
 {
-    internal class ServiceProvider : IServiceProvider
+    internal class ServiceProvider : Infrastructure.IdentityServer.ServiceProvider
     {
-        private readonly Dictionary<Type, Func<object>> _services;
+        private static readonly NinjectModule[] NinjectModules = Settings.IntegrationTests ?
+            new NinjectModule[] {new AzureTableStorageModule()} :
+            new NinjectModule[] {new InMemoryStorageModule()};
 
-        public ServiceProvider()
+        internal ServiceProvider()
+            : base(NinjectModules)
         {
-            _services = new Dictionary<Type, Func<object>>
-            {
-                {typeof(ICertificateProvider), () => new CertificateProvider()},
-                {typeof(IClientStore), () => new InMemoryClientStore(Clients.Get())},
-                {typeof(IScopeStore), () => new InMemoryScopeStore(Scopes.Get())},
-                {typeof(IUserService), () => new InMemoryUserService(Users.Get())}
-            };
-        }
-
-        public object GetService(Type serviceType)
-        {
-            Func<object> serviceFactory;
-
-            return _services.TryGetValue(serviceType, out serviceFactory) ? serviceFactory() : null;
         }
     }
 }
