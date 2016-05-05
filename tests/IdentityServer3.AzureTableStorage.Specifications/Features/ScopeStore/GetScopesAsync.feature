@@ -8,7 +8,7 @@ Background:
         | abc   | false                   |
 
 Scenario: publicOnly is true
-    Given publicOnly is true
+    Given publicOnly is 'true'
 	When ScopeStore.GetScopesAsync(<publicOnly>) is called
 	Then the result should scopes:
         | Name  |
