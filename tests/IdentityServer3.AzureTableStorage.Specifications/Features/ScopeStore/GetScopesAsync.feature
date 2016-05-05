@@ -15,6 +15,11 @@ Scenario: publicOnly is true
         | read  |
         | write |
 
-@ignore
 Scenario: publicOnly is false
-    Given todo
+    Given publicOnly is 'false'
+	When ScopeStore.GetScopesAsync(<publicOnly>) is called
+	Then the result should scopes:
+        | Name  |
+        | read  |
+        | write |
+        | abc   |
