@@ -4,7 +4,7 @@ namespace CroquetAustralia.Auth.Infrastructure.AzureTableStorage
     {
         public string GetTableName<TEntity>()
         {
-            return typeof(TEntity).Name;
+            return typeof(TEntity).Name + "s";
         }
     }
 }
