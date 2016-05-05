@@ -21,8 +21,18 @@ namespace CroquetAustralia.Auth.Infrastructure.AzureTableStorage
 
         public CloudTable GetTable<TEntity>()
         {
+            return GetTable<TEntity>(true);
+        }
+
+        public CloudTable GetTable<TEntity>(bool createIfNotExists)
+        {
             var tableName = _tableNameProvider.GetTableName<TEntity>();
             var table = _cloudTableClient.GetTableReference(tableName);
+
+            if (createIfNotExists)
+            {
+                table.CreateIfNotExists();
+            }
 
             return table;
         }
