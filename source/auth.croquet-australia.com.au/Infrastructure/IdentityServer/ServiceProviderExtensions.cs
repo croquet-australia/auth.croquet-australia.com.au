@@ -4,7 +4,7 @@ using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
 using Ninject;
 
-namespace CroquetAustralia.Auth.Infrastructure
+namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
 {
     public static class ServiceProviderExtensions
     {

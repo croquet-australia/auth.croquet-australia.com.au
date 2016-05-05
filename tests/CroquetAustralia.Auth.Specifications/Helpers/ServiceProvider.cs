@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using CroquetAustralia.Auth.Infrastructure;
+using CroquetAustralia.Auth.Infrastructure.IdentityServer;
 using CroquetAustralia.Auth.Specifications.Helpers.IdentityServer;
 using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Services.InMemory;
