@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auth.croquet-australia.com.au", "source\auth.croquet-australia.com.au\auth.croquet-australia.com.au.csproj", "{C2FC58B2-CDB1-466D-8B5D-3FE3378AB5D0}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer3.AzureTableStorage.IntegrationTests", "tests\IdentityServer3.AzureTableStorage.IntegrationTests\IdentityServer3.AzureTableStorage.IntegrationTests.csproj", "{10DFC7DC-3CF0-4687-8806-DC678069A866}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer3.AzureTableStorage.Tests", "tests\IdentityServer3.AzureTableStorage.Tests\IdentityServer3.AzureTableStorage.Tests.csproj", "{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer3.AzureTableStorage.Specifications", "tests\IdentityServer3.AzureTableStorage.Specifications\IdentityServer3.AzureTableStorage.Specifications.csproj", "{FA1A613C-F029-411E-9D07-9F8579166C55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA1A613C-F029-411E-9D07-9F8579166C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA1A613C-F029-411E-9D07-9F8579166C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA1A613C-F029-411E-9D07-9F8579166C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA1A613C-F029-411E-9D07-9F8579166C55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +72,6 @@ Global
 		{08D744C6-282C-4589-A65B-6A2B4B713C56} = {6599224D-0571-48A4-B5AE-838099DA2DC6}
 		{10DFC7DC-3CF0-4687-8806-DC678069A866} = {D3520EC8-CCF1-4D4C-ABC4-7AE16905F735}
 		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D} = {D3520EC8-CCF1-4D4C-ABC4-7AE16905F735}
+		{FA1A613C-F029-411E-9D07-9F8579166C55} = {D3520EC8-CCF1-4D4C-ABC4-7AE16905F735}
 	EndGlobalSection
 EndGlobal
