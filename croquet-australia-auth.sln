@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer3.AzureTableS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer3.AzureTableStorage.IntegrationTests", "tests\IdentityServer3.AzureTableStorage.IntegrationTests\IdentityServer3.AzureTableStorage.IntegrationTests.csproj", "{10DFC7DC-3CF0-4687-8806-DC678069A866}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer3.AzureTableStorage.Tests", "tests\IdentityServer3.AzureTableStorage.Tests\IdentityServer3.AzureTableStorage.Tests.csproj", "{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{10DFC7DC-3CF0-4687-8806-DC678069A866}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10DFC7DC-3CF0-4687-8806-DC678069A866}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10DFC7DC-3CF0-4687-8806-DC678069A866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{9BA45BA7-AE5B-4434-96A5-80C57811CDF6} = {D3520EC8-CCF1-4D4C-ABC4-7AE16905F735}
 		{08D744C6-282C-4589-A65B-6A2B4B713C56} = {6599224D-0571-48A4-B5AE-838099DA2DC6}
 		{10DFC7DC-3CF0-4687-8806-DC678069A866} = {D3520EC8-CCF1-4D4C-ABC4-7AE16905F735}
+		{060B3BCF-EBA0-4F2F-9E5B-11E2A628EC3D} = {D3520EC8-CCF1-4D4C-ABC4-7AE16905F735}
 	EndGlobalSection
 EndGlobal
