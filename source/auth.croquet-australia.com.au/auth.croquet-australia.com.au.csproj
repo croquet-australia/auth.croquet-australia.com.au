@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
-    <EmbeddedResource Include="Infrastructure\idsrv3test.pfx" />
+    <EmbeddedResource Include="Infrastructure\IdentityServer\idsrv3test.pfx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -114,12 +114,12 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Infrastructure\ICertificateProvider.cs" />
-    <Compile Include="Infrastructure\CannotResolveService.cs" />
-    <Compile Include="Infrastructure\CertificateProvider.cs" />
-    <Compile Include="Infrastructure\ServiceProviderExtensions.cs" />
+    <Compile Include="Infrastructure\IdentityServer\ICertificateProvider.cs" />
+    <Compile Include="Infrastructure\IdentityServer\CannotResolveService.cs" />
+    <Compile Include="Infrastructure\IdentityServer\CertificateProvider.cs" />
+    <Compile Include="Infrastructure\IdentityServer\ServiceProviderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\ServiceProvider.cs" />
+    <Compile Include="Infrastructure\IdentityServer\ServiceProvider.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup />

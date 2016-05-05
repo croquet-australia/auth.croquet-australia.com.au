@@ -1,5 +1,5 @@
 ﻿using CroquetAustralia.Auth;
-using CroquetAustralia.Auth.Infrastructure;
+using CroquetAustralia.Auth.Infrastructure.IdentityServer;
 using IdentityServer3.Core.Configuration;
 using Microsoft.Owin;
 using Owin;

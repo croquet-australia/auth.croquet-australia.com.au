@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
-namespace CroquetAustralia.Auth.Infrastructure
+namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
 {
     public interface ICertificateProvider
     {

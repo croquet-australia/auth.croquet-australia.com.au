@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
-namespace CroquetAustralia.Auth.Infrastructure
+namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
 {
     internal class CertificateProvider : ICertificateProvider
     {

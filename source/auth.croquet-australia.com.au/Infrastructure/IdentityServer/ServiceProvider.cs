@@ -1,8 +1,9 @@
 ﻿using System;
+using CroquetAustralia.Auth.Infrastructure.AzureTableStorage;
 using Ninject;
 using NullGuard;
 
-namespace CroquetAustralia.Auth.Infrastructure
+namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
 {
     internal class ServiceProvider : IServiceProvider
     {
@@ -13,6 +14,7 @@ namespace CroquetAustralia.Auth.Infrastructure
             var kernel = new StandardKernel();
 
             kernel.Bind<ICertificateProvider>().To<CertificateProvider>();
+            kernel.Load<AzureTableStorageModule>();
 
             _kernel = kernel;
         }

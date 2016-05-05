@@ -1,6 +1,6 @@
 ﻿using System;
 using Anotar.NLog;
-using CroquetAustralia.Auth.Infrastructure;
+using CroquetAustralia.Auth.Infrastructure.IdentityServer;
 using IdentityModel.Client;
 using Microsoft.Owin.Hosting;
 using Newtonsoft.Json;

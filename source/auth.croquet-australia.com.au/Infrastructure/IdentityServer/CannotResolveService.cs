@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CroquetAustralia.Auth.Infrastructure
+namespace CroquetAustralia.Auth.Infrastructure.IdentityServer
 {
     internal class CannotResolveService : InvalidOperationException
     {
