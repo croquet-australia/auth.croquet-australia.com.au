@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Http;
-using Anotar.NLog;
+using Anotar.LibLog;
 using Microsoft.Owin.Hosting;
 using Newtonsoft.Json;
 

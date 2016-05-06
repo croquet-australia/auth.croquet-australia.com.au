@@ -1,5 +1,5 @@
 ﻿using System;
-using Anotar.NLog;
+using Anotar.LibLog;
 using CroquetAustralia.Auth.Infrastructure;
 using IdentityModel.Client;
 using Microsoft.Owin.Hosting;

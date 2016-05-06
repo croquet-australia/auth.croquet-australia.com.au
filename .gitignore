@@ -10,4 +10,5 @@ packages/
 *.feature.cs
 *.tmp
 
+LibLog.cs
 npm-debug.log

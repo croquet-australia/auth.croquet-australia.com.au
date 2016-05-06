@@ -1,6 +1,6 @@
 ﻿using System.IdentityModel.Tokens;
 using System.Web.Http;
-using Anotar.NLog;
+using Anotar.LibLog;
 using DummyWebApi;
 using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;

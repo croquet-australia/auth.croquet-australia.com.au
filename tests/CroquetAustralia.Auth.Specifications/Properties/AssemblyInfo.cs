@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Anotar.NLog;
+using Anotar.LibLog;
 
 [assembly: AssemblyTitle("CroquetAustralia.Auth.Specifications")]
 [assembly: AssemblyDescription("Specifications for auth.croquet-australia.com.au.")]
