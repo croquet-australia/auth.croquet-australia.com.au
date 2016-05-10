@@ -9,5 +9,6 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Helpers
         public IEnumerable<Scope> Scopes { get; internal set; }
         public bool PublicOnly { get; set; }
         public CloudTable ScopesTable { get; set; }
+        public Scope Scope { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace IdentityServer3.AzureTableStorage.Infrastructure.Serializers
     {
         public Client Deserialize(DynamicTableEntity row)
         {
+            // todo: use columns
             return JsonConvert.DeserializeObject<Client>(row["Client"].StringValue);
         }
 

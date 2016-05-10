@@ -81,8 +81,12 @@
       <HintPath>..\..\packages\NLog.4.3.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenMagic.Azure.Storage.Table, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\OpenMagic.Azure.Storage.Table.0.2.0\lib\net461\OpenMagic.Azure.Storage.Table.dll</HintPath>
+    <Reference Include="OpenMagic, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenMagic.2.0.0\lib\net45\OpenMagic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenMagic.Azure.Storage.Table, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenMagic.Azure.Storage.Table.0.6.0\lib\net461\OpenMagic.Azure.Storage.Table.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -120,6 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
+    <Compile Include="Features\ScopeSerializer\Deserialize.feature.cs">
+      <DependentUpon>Deserialize.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\ScopeSerializer\Serialize.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Serialize.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ScopeStore\GetScopesAsync.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +143,8 @@
     <Compile Include="Helpers\AzureTableNamer.cs" />
     <Compile Include="Helpers\AzureTableStorage.cs" />
     <Compile Include="Helpers\Actual.cs" />
+    <Compile Include="Helpers\DummyFactory.cs" />
+    <Compile Include="Steps\ScopeSerializer\SerializeSteps.cs" />
     <Compile Include="Steps\ScopeStore\CommonSteps.cs" />
     <Compile Include="Steps\ScopeStore\GetScopesAsyncSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,6 +158,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Features\ScopeSerializer\Deserialize.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Deserialize.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ScopeSerializer\Serialize.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Serialize.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\ScopeStore\GetScopesAsync.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GetScopesAsync.feature.cs</LastGenOutput>

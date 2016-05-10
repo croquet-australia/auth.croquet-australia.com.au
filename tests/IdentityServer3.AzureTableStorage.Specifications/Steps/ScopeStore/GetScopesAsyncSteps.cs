@@ -63,7 +63,7 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Steps.ScopeStore
         [When(@"ScopeStore\.GetScopesAsync\(\<publicOnly\>\) is called")]
         public void WhenScopeStore_GetScopesAsyncIsCalled()
         {
-            var scopeStore = new Stores.ScopeStore(new Table<Scope>(AzureTableProvider.ConnectionString, _given.ScopesTable.Name, new ScopeSerializer()));
+            var scopeStore = new Stores.ScopeStore(new Table<Scope>(AzureTableProvider.ConnectionString, _given.ScopesTable.Name, new Infrastructure.Serializers.ScopeSerializer()));
 
             _actual.Scopes = scopeStore.GetScopesAsync(_given.PublicOnly).Result.ToArray();
         }

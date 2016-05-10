@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System.Reflection;
 using IdentityServer3.Core.Models;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
@@ -8,18 +9,44 @@ namespace IdentityServer3.AzureTableStorage.Infrastructure.Serializers
 {
     public class ScopeSerializer : IDynamicTableEntitySerializer<Scope>
     {
-        //public static Scope FromTableEntity(DynamicTableEntity tableEntity)
-        //{
-        //    return JsonConvert.DeserializeObject<Scope>(tableEntity.Properties["Scope"].StringValue);
-        //}
-        public Scope Deserialize(DynamicTableEntity row)
+        private static readonly PropertyInfo[] ScopeProperties;
+
+        static ScopeSerializer()
         {
-            throw new NotImplementedException();
+            ScopeProperties = typeof(Scope).GetProperties();
         }
 
-        public DynamicTableEntity Serialize(Scope row)
+        public Scope Deserialize(DynamicTableEntity row)
         {
-            throw new System.NotImplementedException();
+            var scope = new Scope
+            {
+                Name = row.PartitionKey
+            };
+
+            foreach (var entityProperty in row.Properties)
+            {
+                var propertyInfo = ScopeProperties.SingleOrDefault(p => p.Name == entityProperty.Key);
+
+                propertyInfo?.SetValue(scope, entityProperty.Value.PropertyAsObject);
+            }
+
+            return scope;
+        }
+
+        public DynamicTableEntity Serialize(Scope scope)
+        {
+            var row = new DynamicTableEntity(scope.Name, "");
+            var ignoreProperties = new[] {"Name", "Claims", "ScopeSecrets"};
+            var properties = scope.GetType().GetProperties().Where(p => !ignoreProperties.Contains(p.Name));
+
+            row.Properties = properties.ToDictionary(
+                p => p.Name,
+                p => EntityProperty.CreateEntityPropertyFromObject(p.GetValue(scope)));
+
+            row.Properties.Add("Claims", EntityProperty.GeneratePropertyForString(JsonConvert.SerializeObject(scope.Claims)));
+            row.Properties.Add("ScopeSecrets", EntityProperty.GeneratePropertyForString(JsonConvert.SerializeObject(scope.ScopeSecrets)));
+
+            return row;
         }
     }
 }
