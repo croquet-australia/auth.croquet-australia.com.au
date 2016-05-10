@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
+using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
 using IdentityServer3.AzureTableStorage.Specifications.Helpers;
 using IdentityServer3.Core.Models;
 using Newtonsoft.Json;
@@ -32,7 +32,7 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Steps.ScopeSerializer
         [When(@"ScopeSerializer\.Serialize\(scope\) is called")]
         public void WhenScopeSerializer_SerializeScopeIsCalled()
         {
-            _actual.DynamicTableEntity = new Infrastructure.Serializers.ScopeSerializer().Serialize(_given.Scope);
+            _actual.DynamicTableEntity = DynamicTableEntitySerializers.ScopeSerializer.Serialize(_given.Scope);
         }
 
         [Then(@"a DynamicTableEntity should be returned")]

@@ -23,7 +23,7 @@ namespace CroquetAustralia.Auth.Infrastructure.AzureTableStorage
             var tableNameProvider = new TableNameProvider();
 
             Bind<IClientStore>().ToConstructor(ctx => new ClientStore(new Table<Client>(connectionString, tableNameProvider.GetTableName<Client>(), new ClientSerializer())));
-            Bind<IScopeStore>().ToConstructor(ctx => new ScopeStore(new Table<Scope>(connectionString, tableNameProvider.GetTableName<Scope>(), new ScopeSerializer())));
+            Bind<IScopeStore>().ToConstructor(ctx => new ScopeStore(new Table<Scope>(connectionString, tableNameProvider.GetTableName<Scope>(), DynamicTableEntitySerializers.ScopeSerializer)));
             Bind<IUserService>().ToConstructor(ctx => new UserService(cloudTableProvider.GetTable<User>()));
         }
     }

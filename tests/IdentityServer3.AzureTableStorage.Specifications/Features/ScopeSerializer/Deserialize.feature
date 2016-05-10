@@ -6,8 +6,10 @@ Scenario: Happy path
     Then a Scope object should be returned
     And the Scope properties should be initialized from the DynamicTableEntity
 
+@ignore @todo
 Scenario: Missing properties
 	Given todo
 
+@ignore @todo
 Scenario: Additional properties
 	Given todo

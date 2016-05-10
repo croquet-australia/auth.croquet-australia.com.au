@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
 using IdentityServer3.AzureTableStorage.Specifications.Helpers;
 using IdentityServer3.Core.Models;
+using OpenMagic.Azure.Storage.Table;
 using TechTalk.SpecFlow;
 
 namespace IdentityServer3.AzureTableStorage.Specifications.Steps.ScopeSerializer
@@ -10,15 +12,15 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Steps.ScopeSerializer
     {
         private readonly Actual _actual;
         private readonly DummyFactory _dummy;
-        private readonly Infrastructure.Serializers.ScopeSerializer _serializer;
         private readonly Given _given;
+        private readonly IDynamicTableEntitySerializer<Scope> _serializer;
 
-        public DeserializeSteps(Given given, Actual actual, DummyFactory dummy, Infrastructure.Serializers.ScopeSerializer serializer)
+        public DeserializeSteps(Given given, Actual actual, DummyFactory dummy)
         {
             _given = given;
             _actual = actual;
             _dummy = dummy;
-            _serializer = serializer;
+            _serializer = DynamicTableEntitySerializers.ScopeSerializer;
         }
 
         [Given(@"a DynamicTableEntity object from the Scopes table")]
