@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
+    <Compile Include="Steps\ScopeSerializer\DeserializeSteps.cs" />
     <Compile Include="Features\ScopeSerializer\Deserialize.feature.cs">
       <DependentUpon>Deserialize.feature</DependentUpon>
       <AutoGen>True</AutoGen>

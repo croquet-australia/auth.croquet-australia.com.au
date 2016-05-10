@@ -10,5 +10,6 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Helpers
         public bool PublicOnly { get; set; }
         public CloudTable ScopesTable { get; set; }
         public Scope Scope { get; set; }
+        public DynamicTableEntity DynamicTableEntity { get; set; }
     }
 }

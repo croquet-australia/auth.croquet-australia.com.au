@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using IdentityServer3.Core.Models;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -23,11 +25,31 @@ namespace IdentityServer3.AzureTableStorage.Infrastructure.Serializers
                 Name = row.PartitionKey
             };
 
-            foreach (var entityProperty in row.Properties)
+            var ignoreProperties = new[] { "Type", "Claims", "ScopeSecrets" };
+            var entityProperties = row.Properties.Where(p => !ignoreProperties.Contains(p.Key));
+
+            foreach (var entityProperty in entityProperties)
             {
                 var propertyInfo = ScopeProperties.SingleOrDefault(p => p.Name == entityProperty.Key);
 
                 propertyInfo?.SetValue(scope, entityProperty.Value.PropertyAsObject);
+            }
+
+            EntityProperty property;
+
+            if (row.Properties.TryGetValue("Type", out property))
+            {
+                scope.Type = (ScopeType)Enum.Parse(typeof(ScopeType), property.StringValue);
+            }
+
+            if (row.Properties.TryGetValue("Claims", out property))
+            {
+                scope.Claims = JsonConvert.DeserializeObject<List<ScopeClaim>>(property.StringValue);
+            }
+
+            if (row.Properties.TryGetValue("ScopeSecrets", out property))
+            {
+                scope.ScopeSecrets = JsonConvert.DeserializeObject<List<Secret>>(property.StringValue);
             }
 
             return scope;
@@ -36,7 +58,7 @@ namespace IdentityServer3.AzureTableStorage.Infrastructure.Serializers
         public DynamicTableEntity Serialize(Scope scope)
         {
             var row = new DynamicTableEntity(scope.Name, "");
-            var ignoreProperties = new[] {"Name", "Claims", "ScopeSecrets"};
+            var ignoreProperties = new[] { "Name", "Claims", "ScopeSecrets" };
             var properties = scope.GetType().GetProperties().Where(p => !ignoreProperties.Contains(p.Name));
 
             row.Properties = properties.ToDictionary(

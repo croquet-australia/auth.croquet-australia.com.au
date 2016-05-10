@@ -7,5 +7,6 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Helpers
     {
         public Scope[] Scopes { get; set; }
         public DynamicTableEntity DynamicTableEntity { get; set; }
+        public Scope Scope { get; set; }
     }
 }
