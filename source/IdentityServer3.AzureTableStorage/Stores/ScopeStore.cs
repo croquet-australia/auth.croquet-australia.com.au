@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Anotar.NLog;
-using IdentityServer3.AzureTableStorage.Infrastructure;
+using AzureMagic.Storage.Table;
 using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
-using IdentityServer3.AzureTableStorage.Services;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -42,7 +40,6 @@ namespace IdentityServer3.AzureTableStorage.Stores
         /// </returns>
         public Task<IEnumerable<Scope>> FindScopesAsync(IEnumerable<string> scopeNames)
         {
-            LogTo.Error($"todo: {nameof(ScopeStore)}.{nameof(FindScopesAsync)}(...)");
             throw new NotImplementedException("todo");
         }
 

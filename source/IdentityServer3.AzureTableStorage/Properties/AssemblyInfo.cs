@@ -3,7 +3,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Anotar.NLog;
+using Anotar.LibLog;
 
 [assembly: AssemblyTitle("IdentityServer3.AzureTableStorage")]
 [assembly: AssemblyDescription("")]

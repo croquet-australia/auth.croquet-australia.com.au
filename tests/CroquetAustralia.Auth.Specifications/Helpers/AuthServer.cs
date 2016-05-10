@@ -1,5 +1,5 @@
 ﻿using System;
-using Anotar.NLog;
+using Anotar.LibLog;
 using CroquetAustralia.Auth.Infrastructure.IdentityServer;
 using IdentityModel.Client;
 using Microsoft.Owin.Hosting;
@@ -45,16 +45,6 @@ namespace CroquetAustralia.Auth.Specifications.Helpers
             try
             {
                 var response = client.RequestResourceOwnerPasswordAsync(emailAddress, password, scope).Result;
-
-                if (response.IsHttpError)
-                {
-                    throw new Exception($"{BaseUrl} client.RequestResourceOwnerPasswordAsync(emailAddress: '{emailAddress}', password: '{password}', scope: '{scope}') failed with HTTP error '({response.HttpErrorStatusCode}) {response.HttpErrorReason}'");
-                }
-
-                if (response.IsError)
-                {
-                    throw new Exception($"{BaseUrl} client.RequestResourceOwnerPasswordAsync(emailAddress: '{emailAddress}', password: '{password}', scope: '{scope}') failed with error '{response.Error}'");
-                }
 
                 LogTo.Debug($"{BaseUrl} Token resposne for emailAddress: '{emailAddress}', password: '{password}', scope: '{scope}':\n\n{JsonConvert.SerializeObject(response, Formatting.Indented)}");
                 return response;

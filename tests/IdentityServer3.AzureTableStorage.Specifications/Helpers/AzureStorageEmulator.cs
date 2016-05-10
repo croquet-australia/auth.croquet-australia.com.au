@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Linq;
-using Anotar.NLog;
+using Anotar.LibLog;
 
 namespace IdentityServer3.AzureTableStorage.Specifications.Helpers
 {

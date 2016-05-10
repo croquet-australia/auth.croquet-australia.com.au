@@ -1,4 +1,4 @@
-﻿using Anotar.NLog;
+﻿using Anotar.LibLog;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
