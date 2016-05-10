@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AzureMagic.Storage.Table;
 using FluentAssertions;
-using IdentityServer3.AzureTableStorage.Infrastructure;
 using IdentityServer3.AzureTableStorage.Specifications.Helpers;
 using IdentityServer3.AzureTableStorage.Specifications.Helpers.Models;
 using IdentityServer3.Core.Models;
