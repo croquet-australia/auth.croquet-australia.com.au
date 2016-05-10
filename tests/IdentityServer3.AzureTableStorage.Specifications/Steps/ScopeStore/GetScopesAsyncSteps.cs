@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using AzureMagic.Storage.Table;
 using FluentAssertions;
+using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
 using IdentityServer3.AzureTableStorage.Specifications.Helpers;
 using IdentityServer3.AzureTableStorage.Specifications.Helpers.Models;
+using IdentityServer3.AzureTableStorage.Stores;
 using IdentityServer3.Core.Models;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
+using OpenMagic.Azure.Storage.Table;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -60,7 +63,7 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Steps.ScopeStore
         [When(@"ScopeStore\.GetScopesAsync\(\<publicOnly\>\) is called")]
         public void WhenScopeStore_GetScopesAsyncIsCalled()
         {
-            var scopeStore = new Stores.ScopeStore(_given.ScopesTable);
+            var scopeStore = new Stores.ScopeStore(new Table<Scope>(AzureTableProvider.ConnectionString, _given.ScopesTable.Name, new ScopeSerializer()));
 
             _actual.Scopes = scopeStore.GetScopesAsync(_given.PublicOnly).Result.ToArray();
         }

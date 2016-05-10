@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AzureMagic.Storage.Table;
 using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
 using Microsoft.WindowsAzure.Storage.Table;
+using OpenMagic.Azure.Storage.Table;
 
 namespace IdentityServer3.AzureTableStorage.Stores
 {
     /// <summary>
-    ///     Retreive <see cref="Scope" /> information from a Azure Storage Table.
+    ///     Retrieve <see cref="Scope" /> information from a Azure Storage Table.
     /// </summary>
     /// <seealso cref="IdentityServer3.Core.Services.IScopeStore" />
     public class ScopeStore : IScopeStore
     {
-        private readonly CloudTable _table;
+        private readonly ITable<Scope> _table;
+
+        public ScopeStore() : base()
+        {
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ScopeStore" /> class.
@@ -24,7 +28,7 @@ namespace IdentityServer3.AzureTableStorage.Stores
         /// <param name="table">
         ///     The Azure Storage Table that stores <see cref="Scope" />Scopres.
         /// </param>
-        public ScopeStore(CloudTable table)
+        public ScopeStore(ITable<Scope> table)
         {
             _table = table;
         }
@@ -55,16 +59,13 @@ namespace IdentityServer3.AzureTableStorage.Stores
         /// </returns>
         public async Task<IEnumerable<Scope>> GetScopesAsync(bool publicOnly = true)
         {
-            var tableQuery = new TableQuery<DynamicTableEntity>();
+            var scopes = await _table.GetAllAsync();
 
             if (publicOnly)
             {
-                tableQuery = tableQuery
-                    .Where(TableQuery.GenerateFilterConditionForBool($"{nameof(Scope.ShowInDiscoveryDocument)}", QueryComparisons.Equal, true));
+                // todo: Improve ITable<TEntity>.GetAllAsync() to accept where clause
+                scopes = scopes.Where(s => s.ShowInDiscoveryDocument);
             }
-
-            var tableEntities = await _table.ExecuteQueryAsync(tableQuery);
-            var scopes = tableEntities.Select(ScopeConvert.FromTableEntity);
 
             return scopes;
         }

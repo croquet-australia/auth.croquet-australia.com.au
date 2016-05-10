@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Anotar.LibLog;
-using AzureMagic.Storage.Table;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
 using NullGuard;
+using OpenMagic.Azure.Storage.Table;
 
 namespace IdentityServer3.AzureTableStorage.Stores
 {
@@ -20,7 +20,7 @@ namespace IdentityServer3.AzureTableStorage.Stores
         [return: AllowNull]
         public async Task<Client> FindClientByIdAsync(string clientId)
         {
-            var clients = await _table.FindAsync(clientId);
+            var clients = await _table.FindByPartitionKeyAsync(clientId);
             var client = clients.SingleOrDefault();
 
             if (client == null)

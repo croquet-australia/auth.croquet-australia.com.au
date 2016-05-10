@@ -1,4 +1,6 @@
-﻿using AzureMagic.Storage.Table;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
 using IdentityServer3.AzureTableStorage.Models;
 using IdentityServer3.AzureTableStorage.Services;
@@ -7,6 +9,7 @@ using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
 using Microsoft.WindowsAzure.Storage;
 using Ninject.Modules;
+using OpenMagic.Azure.Storage.Table;
 
 namespace CroquetAustralia.Auth.Infrastructure.AzureTableStorage
 {
@@ -19,8 +22,8 @@ namespace CroquetAustralia.Auth.Infrastructure.AzureTableStorage
             var cloudTableProvider = new CloudTableProvider(cloudStorage);
             var tableNameProvider = new TableNameProvider();
 
-            Bind<IClientStore>().ToConstructor(ctx => new ClientStore(new Table<Client>(connectionString,tableNameProvider.GetTableName<Client>(), new ClientSerialier())));
-            Bind<IScopeStore>().ToConstructor(ctx => new ScopeStore(cloudTableProvider.GetTable<Scope>()));
+            Bind<IClientStore>().ToConstructor(ctx => new ClientStore(new Table<Client>(connectionString, tableNameProvider.GetTableName<Client>(), new ClientSerializer())));
+            Bind<IScopeStore>().ToConstructor(ctx => new ScopeStore(new Table<Scope>(connectionString, tableNameProvider.GetTableName<Scope>(), new ScopeSerializer())));
             Bind<IUserService>().ToConstructor(ctx => new UserService(cloudTableProvider.GetTable<User>()));
         }
     }

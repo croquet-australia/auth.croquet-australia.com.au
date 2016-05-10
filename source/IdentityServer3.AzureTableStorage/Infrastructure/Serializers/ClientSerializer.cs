@@ -1,12 +1,12 @@
 ﻿using System;
-using AzureMagic.Storage.Table;
 using IdentityServer3.Core.Models;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
+using OpenMagic.Azure.Storage.Table;
 
 namespace IdentityServer3.AzureTableStorage.Infrastructure.Serializers
 {
-    public class ClientSerialier : IDynamicTableEntitySerializer<Client>
+    public class ClientSerializer : IDynamicTableEntitySerializer<Client>
     {
         public Client Deserialize(DynamicTableEntity row)
         {

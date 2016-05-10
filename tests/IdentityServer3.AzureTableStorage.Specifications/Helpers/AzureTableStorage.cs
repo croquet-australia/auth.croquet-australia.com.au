@@ -6,6 +6,8 @@ namespace IdentityServer3.AzureTableStorage.Specifications.Helpers
 {
     internal static class AzureTableProvider
     {
+        internal const string ConnectionString = "UseDevelopmentStorage=true;";
+
         static AzureTableProvider()
         {
             AzureStorageEmulator.StartIfNotRunning();
