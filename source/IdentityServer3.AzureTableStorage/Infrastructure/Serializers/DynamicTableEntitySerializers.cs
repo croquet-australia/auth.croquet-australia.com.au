@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using IdentityServer3.Core.Models;
+using OpenMagic.Azure.Storage.Table;
 
 namespace IdentityServer3.AzureTableStorage.Infrastructure.Serializers
 {
