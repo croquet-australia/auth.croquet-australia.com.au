@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IdentityServer3.AzureTableStorage.Infrastructure.Serializers;
-using IdentityServer3.AzureTableStorage.Models;
-using IdentityServer3.AzureTableStorage.Services;
-using IdentityServer3.AzureTableStorage.Stores;
+using IdentityServer3.Azure.Storage.Table.Infrastructure.Serializers;
+using IdentityServer3.Azure.Storage.Table.Models;
+using IdentityServer3.Azure.Storage.Table.Services;
+using IdentityServer3.Azure.Storage.Table.Stores;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
 using Microsoft.WindowsAzure.Storage;

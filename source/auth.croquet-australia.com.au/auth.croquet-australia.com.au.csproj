@@ -158,9 +158,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer3.AzureTableStorage\IdentityServer3.AzureTableStorage.csproj">
+    <ProjectReference Include="..\IdentityServer3.Azure.Storage.Table\IdentityServer3.Azure.Storage.Table.csproj">
       <Project>{08d744c6-282c-4589-a65b-6a2b4b713c56}</Project>
-      <Name>IdentityServer3.AzureTableStorage</Name>
+      <Name>IdentityServer3.Azure.Storage.Table</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
